@@ -1,4 +1,4 @@
 # moveApp
-购票页面
+Ticket page
 # monit
-这样算是dome？
+Is that dome?
