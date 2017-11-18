@@ -1,0 +1,83 @@
+
+<!doctype html>
+<!--
+
+  .--,       .--,
+ ( (  \.---./  ) )
+  '.__/o   o\__.'
+     {=    =}
+      >  -  <
+     /       \
+    //       \
+   //|   .   |\
+   "'\       /'"_.-~`'-.
+      \  _  /--'
+    ___)( )(___
+   (((__) (__)))
+
+   the valiant knights of programming who toil away.
+
+-->
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Handsome</title>
+  <link rel="stylesheet" href="">
+  <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+ </head>
+ <body>
+    <div id="box">
+        <ul>
+            <li>这是第1个li</li>
+            <li>这是第2个li</li>
+            <li>这是第3个li</li>
+            <li>这是第4个li</li>
+            <li>这是第5个li</li>
+        </ul>
+    </div>
+  <script type="text/javascript">
+
+        // 1. 初始化数据
+        var ster = init();
+        length = ster['length']
+        oLi = ster['oLi']
+        oBox = ster['oBox']
+
+        // 2.添加oLi 的 id
+        loop(length,oLi);
+
+        // 3.监听oBox
+        listen(oBox);
+
+        function init(){
+              var oBox = document.querySelector("#box");
+              var oLi = document.querySelectorAll("li");
+              var length = oLi.length;
+              return {
+                'oBox':oBox,
+                'oLi':oLi,
+                'length':length
+              }
+        }
+
+
+      function loop(len,li){
+        for(var i=0;i<len;i++){
+            li[i].id = i;
+          };
+      };
+
+      function listen(obj){
+        obj.addEventListener('click',function(e){
+                key = e['target']
+                console.log(key.id)
+          });
+      };
+
+  </script>
+ </body>
+</html>
