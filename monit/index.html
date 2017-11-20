@@ -42,10 +42,11 @@
   <script type="text/javascript">
 
         // 1. 初始化数据
-        var ster = init();
+        var ster = new init();
         length = ster['length']
         oLi = ster['oLi']
         oBox = ster['oBox']
+
 
         // 2.添加oLi 的 id
         loop(length,oLi);
@@ -54,15 +55,17 @@
         listen(oBox);
 
         function init(){
-              var oBox = document.querySelector("#box");
-              var oLi = document.querySelectorAll("li");
-              var length = oLi.length;
-              return {
-                'oBox':oBox,
-                'oLi':oLi,
-                'length':length
-              }
+              this.oBox = document.querySelector("#box");
+              this.oLi = document.querySelectorAll("li");
+              this.length = this.oLi.length;
+              // return {
+              //   'oBox':oBox,
+              //   'oLi':oLi,
+              //   'length':length
+              // }
         }
+
+
 
 
       function loop(len,li){
