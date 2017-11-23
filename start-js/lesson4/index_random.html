@@ -1,0 +1,65 @@
+
+<!doctype html>
+<!--
+
+  .--,       .--,
+ ( (  \.---./  ) )
+  '.__/o   o\__.'
+     {=    =}
+      >  -  <
+     /       \
+    //       \
+   //|   .   |\
+   "'\       /'"_.-~`'-.
+      \  _  /--'
+    ___)( )(___
+   (((__) (__)))
+
+   the valiant knights of programming who toil away.
+
+-->
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Handsome</title>
+  <link rel="stylesheet" href="">
+  <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+ </head>
+ <body>
+  <script type="text/javascript">
+        // //1.随机出3个0-9的数字
+        // //2.随机出游标 0 1 2
+        // //3.插入游标的值
+        // var codeList = [];
+        // for(var i=0;i<3;i++){
+        //     codeList.push(parseInt(Math.random()*10))
+        // };
+        // var index_radom = parseInt(Math.random()*3);
+        // var key = codeList[index_radom];
+
+        // //console.log(codeList,index_radom,key);
+
+        // codeList.splice(index_radom, 0, key);
+        // console.log(codeList)
+
+        var codeList = [];
+        for (var i = 0; i < 3 ; i++) {
+            codeList.push(getRandomIntInclusive(0,9));
+        }
+        rondomIndex = getRandomIntInclusive(0,2);
+        insertValue = codeList[rondomIndex];
+        codeList.splice(rondomIndex,0,insertValue);
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+          }
+        console.log(codeList);
+  </script>
+ </body>
+</html>
+
