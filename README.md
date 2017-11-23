@@ -8,3 +8,4 @@ Is that dome?
 # Lazy load
 
 # start-js
+add index_random
