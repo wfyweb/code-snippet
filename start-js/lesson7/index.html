@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>JavaScript编程入门</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<!-- bootstrap-cdn- 引入 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="public/css/style.css">
+<script src="public/js/index.js"></script>
+<style>
+    img{
+        border-radius:50px;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    h4{
+        display: inline-block;
+    }
+
+</style>
+</head>
+<body>
+    <div id="app">
+        <div class="main-header">
+            <div class="container">
+              <h1>{{mes}}</h1>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">前端心里话</h3>
+            </div>
+            <div class="panel-body" v-for="item in words">
+              <li class="list-group-item" >
+                <img  v-bind:src="item.avatar" width="50" height="50">
+                <h4>{{ item.name }}</h4>
+              </li>
+              <li class="list-group-item">
+                  {{ item.words }}
+              </li>
+            </div>
+          </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="public/js/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            words:words,
+            mes:"你为什么学编程？",
+            //name:"111111"
+        }
+    })
+</script>
+</html>
