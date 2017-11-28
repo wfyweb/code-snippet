@@ -43,6 +43,7 @@ function SoundC(index,content){
         return 'finished';
     }
 };
+// 士兵D
 function SoundD(index,content){
     console.log('报数 4');
     if(index<content){
@@ -51,6 +52,7 @@ function SoundD(index,content){
         return 'finished';
     }
 };
+// 士兵E
 function SoundE(index,content){
     console.log('报数 5');
     if(index<content){
@@ -59,7 +61,7 @@ function SoundE(index,content){
        return 'finished';
     }
 };
-
+// 执行函数 判断是否报数完毕
 function startSoundOff(){
     var content = 5;
     var result = SoundA( 1,content);
