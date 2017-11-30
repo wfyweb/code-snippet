@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+  <swiper class="swiper-pic" indicator-dots circular indicator-color='#368' indicator-active-color='#fff'>
+    <swiper-item>
+      <image src="/images/swiper/post1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/swiper/post2.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/swiper/post3.jpg"></image>
+    </swiper-item>
+  </swiper>
+</view>

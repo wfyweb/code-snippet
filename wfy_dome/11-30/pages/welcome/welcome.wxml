@@ -1,0 +1,6 @@
+<!--welcome.wxml-->
+<view class="container">
+  <image class="avatar" src="../../images/avatar/kyogre.jpg"></image>
+  <text>hello,Wang</text>
+  <button class="let_go" bindtap="goTo" type="default">let's go</button>
+</view>
