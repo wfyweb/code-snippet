@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    JavaScript编程入门
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="icon" href="http://wfyweb.com/yuan/images/handsome1.ico" type="image/x-cio">
+  <link rel="icon" href="http://js.xinshengdaxue.com/stylesheets/github-markdown.css" type="image/x-cio">
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+  <body>
+    <div id="app">
+      <nav class="navbar navbar-default nav-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" src="https://o4a7cbihz.qnssl.com/picture/57140c0c-4ffa-4dde-9757-570b53f96796">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/topics">TOPICS <span class="sr-only">(current)</span></a></li>
+        <li><a href="/homework/list">作业 <span class="sr-only">(current)</span></a></li>
+        <li><a href="/api">API <span class="sr-only">(current)</span></a></li>
+        <li><a href="/studentWorks">作品 <span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+        <div class="container">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="well">同学，想对我说点什么吗？想对我说心里话可没那么容易哟。你只有把第九节课的作业搞明白了才知道怎么对我说心里话。我等着你</div>
+            <div class="panel panel-default">
+              <div class="panel-body markdown-body">
+                <div class="media media-x" v-for="item in comments">
+                  <div class="media-body">
+                    <h4 class="media-heading">{{ item.name }}</h4>
+                    <div v-html="item.content"></div>
+                    <!-- <span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true"><div class="comment" v-html="item.content"></span></div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">我的名字</label>
+                    <input type="text" class="form-control" v-model="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">我在新大注册的手机号或邮箱</label>
+                    <input type="text" class="form-control" v-model="account">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">我想说</label>
+                    <textarea class="form-control" rows="10" v-model="content"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-primary btn-lg btn-block" v-on:click="submit">提交</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        comments: [],
+        name: '',
+        account: '',
+        content: '',
+        comment: '',
+      },
+      methods: {
+        fetchComment: function () {
+          var that = this;
+          $.get('/sayToTeacher/list', function (result) {
+            if (!result || !result.code) {
+              alert('获取列表失败');
+            } else {
+              that.comments = result.data;
+            }
+          })
+        },
+        submit: function () {
+          var that = this;
+          if (!this.name || !this.account || !this.content) {
+            alert('输入框不能为空');
+            return;
+          }
+
+          $.post('/sayToTeacher/add', { name: this.name, account: this.account, content: this.content }, function (result) {
+            if (!result || !result.code) {
+              alert(result.message);
+            } else {
+              that.name = '';
+              that.account = '';
+              that.content = '';
+              that.comments.push(result.data);
+            }
+          })
+        },
+        submit: function () {
+          var that = this;
+          if (!this.name || !this.account || !this.content) {
+            alert('输入框不能为空');
+            return;
+          }
+
+          $.post('/sayToTeacher/addComment', { account: this.account, comment: this.comment }, function (result) {
+            if (!result || !result.code) {
+              alert(result.message);
+            } else {
+              that.name = '';
+              that.account = '';
+              that.content = '';
+              that.comment = '';
+            }
+          })
+        }
+      }
+    });
+
+    app.fetchComment();
+  </script>
+
+</html>
