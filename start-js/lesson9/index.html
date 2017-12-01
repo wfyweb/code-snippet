@@ -29,7 +29,7 @@
 
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <script src="https://unpkg.com/vue"></script>
  </head>
  <body>
  <div id="app">
@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">
-            <img src="http://wfyweb.com/yuan/images/handsome1.ico" alt="Brand" width="20" height="20">
+            <img src="http://wfyweb.com/yuan/images/title.jpg" alt="Brand" width="20" height="20">
           </a>
         </div>
 
@@ -82,15 +82,15 @@
           <div class="panel panel-default">
             <div class="panel-body markdown-body">
               <div class="media media-x" v-for="item in comments">
-                    <div class="media-body">
+                  <div class="media-body">
                     <h4 class="media-heading">{{ item.name }}</h4>
-                    <div v-html="item.content">111111</div>
-                    <!-- <span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true"><div class="comment" v-html="item.content"></span></div> -->
+                    <div v-html="item.content"></div>
+                    <!-- <span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true"><div class="comment" v-html="item.content"></div></span> -->
+                  </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2">
+          <!-- 留言板 -->
           <div class="panel panel-default">
             <div class="panel-body">
               <form>
@@ -110,8 +110,39 @@
               </form>
             </div>
           </div>
-      </div>
+        </div>
     </div>
  </div>
+
  </body>
+ <script>
+   var app = new Vue({
+      el:'#app',
+      data:{
+        comments:[],
+        name:'',
+        account:'',
+        content:'',
+        comment:''
+      },
+      methods:{
+        fetchComment:function(){
+          var that = this;
+          $.get('https://js.xinshengdaxue.com/sayToTeacher/list',function(result){
+              if(!result || !result.code){
+                alert('获取列表失败');
+              }else{
+                that.comments = result.data;
+                console.log(result)
+                console.log(result.data)
+                console.log(that.comments)
+              }
+          })
+        }
+      }
+   });
+   app.fetchComment();
+
+
+ </script>
 </html>
