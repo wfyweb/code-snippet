@@ -126,8 +126,10 @@
         comment:''
       },
       methods:{
+        //获取数据列表
         fetchComment:function(){
           var that = this;
+          //jq get请求
           $.get('https://js.xinshengdaxue.com/sayToTeacher/list',function(result){
               if(!result || !result.code){
                 alert('获取列表失败');
@@ -138,6 +140,12 @@
                 console.log(that.comments)
               }
           })
+        },
+        setComment:function(){
+          var that = this;
+          //jq post请求
+          $.post('')
+
         }
       }
    });
