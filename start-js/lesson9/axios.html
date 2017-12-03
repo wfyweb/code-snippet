@@ -6,9 +6,10 @@
   <meta charset="UTF-8">
   <title>新生大学</title>
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="./public/style.css">
+  <link rel="stylesheet" href="./public/style.css">
   <script src="./public/vue.min.js"></script>
 </head>
 
@@ -21,8 +22,42 @@
     </div>
     <div class="container">
       <div class="panel-body">
-        <div class="btn btn-primary" v-on:click="sendData">有话对老师说</div>
+        <!-- 按钮 -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">有话对老师说</button>
+        <!-- 下拉模态框 -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">有话对老师说</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">我的名字</label>
+                    <input type="text" class="form-control" id="recipient-name" v-model="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="recipient-name" class="control-label">我的账号</label>
+                    <input type="text" class="form-control" id="recipient-name" v-model="account">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="control-label">我想说的话</label>
+                    <textarea class="form-control" id="message-text" v-model = "content"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="sendData">发送</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class="panel-title">我的心里话</h3>
@@ -60,36 +95,55 @@
   var app = new Vue({
     el: '#app',   // #app 和html中div#id的 app 对应
     data: {
-      wordsList: []  // 变量wordsList可以在html使用
+      wordsList: [],  // 变量wordsList可以在html使用
+      name:'',
+      account:'',
+      content:''
     },
     methods: {
-      // fetchData: function() {
-      //   axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/words')
-      //     .then(function (res) {
-      //       app.wordsList = res.data.words;
-      //     })
-      //     .catch(function (error) {
-      //       console.log(error);
-      //     });
-      // },
-      sendData: function() {
-        //TODO: 对老师说点什么呢？
-        axios.post('https://js.xinshengdaxue.com/api/v1/learnJS/sayToMe', {
-            name: 'wfy',
-            account: '阿怪', // 账号
-            content: '大家阿娇阿的纠结啊啊'
-          })
-          .then(function (res) {
-            app.wordsList = res.data;
-            console.log(1,res);
-            console.log(2,app.wordsList);
+      fetchData: function() {
+        var that = this;
+        axios.get('http://holleqi.top/list/all.json')
+          .then(function (response) {
+            that.wordsList = response.data.data;
+            console.log(response)
           })
           .catch(function (error) {
             console.log(error);
           });
-      }
+      },
+       sendData: function() {
+        var that = this;
+        if(!this.name || !this.account || !this.content){
+          alert('输入框不能为空');
+          return
+        }
+        axios.post('http://holleqi.top/list/all.json', {
+            name: this.name,
+            account: this.account,
+            content: this.content
+          })
+          .then(function (res) {
+            //保存发生的JSON数据
+            var obj = {
+              name: that.name,
+              account: that.account,
+              content: that.content
+            };
+            console.log(obj);
+            //添加到数组
+            that.wordsList.push(obj);
+            //发生数据后清空表单
+            that.name = '';
+            that.account = '';
+            that.content = '';
+          })
+          .catch(function (error){
+            console.log(error);
+          });
+       }
     }
   });
   //app.fetchData();
-  app.sendData();
+  app.fetchData();
 </script>
