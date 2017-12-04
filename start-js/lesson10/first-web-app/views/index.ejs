@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>新生大学</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script src="/vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <div class="main-header">
+    <div class="container">
+      <h1>JavaScript编程入门</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="panel-body">
+      <!-- 按钮 -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">有话对老师说</button>
+      <!-- 下拉模态框 -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="exampleModalLabel">有话对老师说</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">我的名字</label>
+                  <input type="text" class="form-control" id="recipient-name" v-model="name">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="control-label">我的账号</label>
+                  <input type="text" class="form-control" id="recipient-name" v-model="account">
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="control-label">我想说的话</label>
+                  <textarea class="form-control" id="message-text" v-model = "content"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="sendData">发送</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">我的心里话</h3>
+      </div>
+      <div class="panel-body">
+        <div class="words-pannel" v-for="item in wordsList">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object avatar" v-bind:src="item.avatar" alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading">
+                {{ item.name }}
+              </h4>
+              <h4 class="media-heading">
+                {{ item.account }}
+              </h4>
+              <div class="media-heading" v-html = "item.content">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+<script>
+    // vue官网： https://cn.vuejs.org/v2/guide/
+    // 初始化Vue
+    var app = new Vue({
+        el: '#app',   // #app 和html中div#id的 app 对应
+        data: {
+            wordsList: [],  // 变量wordsList可以在html使用
+            name:'',
+            account:'',
+            content:''
+        },
+        methods: {
+            fetchData: function() {
+                var that = this;
+                axios.get('/all.json')
+                    .then(function (response) {
+                        that.wordsList = response.data.data;
+                        console.log(response)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+            sendData: function() {
+                var that = this;
+                if(!this.name || !this.account || !this.content){
+                    alert('输入框不能为空');
+                    return
+                }
+                axios.post('/all.json', {
+                    name: this.name,
+                    account: this.account,
+                    content: this.content
+                })
+                    .then(function (res) {
+                        //保存发生的JSON数据
+                        var obj = {
+                            name: that.name,
+                            account: that.account,
+                            content: that.content
+                        };
+                        console.log(obj);
+                        //添加到数组
+                        that.wordsList.push(obj);
+                        //发生数据后清空表单
+                        that.name = '';
+                        that.account = '';
+                        that.content = '';
+                    })
+                    .catch(function (error){
+                        console.log(error);
+                    });
+            }
+        }
+    });
+    //app.fetchData();
+    app.fetchData();
+</script>
