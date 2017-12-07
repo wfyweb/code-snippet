@@ -17,6 +17,10 @@
 
    the valiant knights of programming who toil away.
 
+   dome: https://js.xinshengdaxue.com/sayToTeacher
+
+   实现获取同学们的心里话，和发生留言
+   用ajax 请求并且响应数据
 -->
 <html lang="en">
  <head>
@@ -85,7 +89,6 @@
                   <div class="media-body">
                     <h4 class="media-heading">{{ item.name }}</h4>
                     <div v-html="item.content"></div>
-                    <!-- <span class="glyphicon glyphicon glyphicon-share-alt" aria-hidden="true"><div class="comment" v-html="item.content"></div></span> -->
                   </div>
               </div>
             </div>
@@ -106,7 +109,7 @@
                   <label for="exampleInputPassword1">我想说</label>
                   <textarea class="form-control" rows="10" v-model="content"></textarea>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block" v-on:click="submit">提交</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block" v-on:click="setComment">提交</button>
               </form>
             </div>
           </div>
@@ -122,8 +125,7 @@
         comments:[],
         name:'',
         account:'',
-        content:'',
-        comment:''
+        content:''
       },
       methods:{
         //获取数据列表
@@ -143,8 +145,26 @@
         },
         setComment:function(){
           var that = this;
+          if(!this.name || !this.account ||　!this.content){
+            alert('输入框不能为空');
+            return;
+          }
           //jq post请求
-          $.post('')
+          $.post('https://js.xinshengdaxue.com/api/v1/learnJS/sayToMe',{
+              name:this.name,
+              account:this.account,
+              content:this.content
+          },function(result){
+            if(!result || !result.code){
+              alert(result.message);
+              return;
+            }else{
+              that.name = '';
+              that.account = '';
+              that.content = '';
+              that.comments.push(result.data);
+            }
+          })
 
         }
       }
