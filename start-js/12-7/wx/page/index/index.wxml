@@ -1,0 +1,18 @@
+<view class="container flex-column">
+  <text class="title " selectable='false'>快递查询</text>
+  <view class="search flex-row">
+    <text>单号:</text>
+    <input type="number" id="goudan" focus class="search-ipt" placeholder="请输入快递单号" placeholder-class="placeholder" value="{{value}}" bindinput="expressInput" />
+  </view>
+  <button class="search-tap" loading="{{loading}}" bindtap="searchTap" type="primary">查询快递</button>
+  <scroll-view scroll-y class="flex-column">
+    <view wx:for='{{expressList}}' class="items flex-column">
+      <text>{{item.time}}  {{index}}</text>
+      <text>{{item.context}}</text>
+    </view>
+
+    <text wx:if='{{!flag}}'>请求失败啦</text>
+    <text wx:elif='{{flag==="讨厌"}}'>讨厌</text>
+    <text wx:else='{{flag}}'>真讨厌</text>
+  </scroll-view>
+</view>

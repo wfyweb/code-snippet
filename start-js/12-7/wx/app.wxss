@@ -1,0 +1,16 @@
+.flex-row{
+    display:flex; /*开启弹性布局*/
+    flex-direction: row; /*主轴方向-横*/
+    justify-content: space-around; /*主轴对齐的方式-间隔都相等*/
+    align-items: center;/*交叉轴对齐的方式-中点对齐*/
+}
+
+.flex-column{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center; 
+}
+input.placeholder{
+    color:#ddd;
+}
