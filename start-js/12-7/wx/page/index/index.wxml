@@ -10,9 +10,11 @@
       <text>{{item.time}}  {{index}}</text>
       <text>{{item.context}}</text>
     </view>
+    <!--wx:if判断-->
 
     <text wx:if='{{!flag}}'>请求失败啦</text>
     <text wx:elif='{{flag==="讨厌"}}'>讨厌</text>
     <text wx:else='{{flag}}'>真讨厌</text>
+    
   </scroll-view>
 </view>
