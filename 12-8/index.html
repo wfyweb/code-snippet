@@ -88,7 +88,7 @@
     <script type="text/template" id="app-tpl">
         <div class="product">
              <div class="imageContainer">
-                 <img src="{% %}" alt="..." />
+                 <img src="{%img%}" alt="..." />
                  <div class="layer">
                      <p>找同款</p>
                      <p>找相似</p>
@@ -115,7 +115,6 @@
         var Util = {
             tpl:function(id){
                 return document.getElementById(id).innerHTML;
-
             },
             ajax:function(url,callback){
                 var xhr = new XMLHttpRequest();
@@ -132,8 +131,17 @@
                 xhr.send(null);
             }
         };
+        var str = Util.tpl("app-tpl");
+        //封装一个格式化字符串的方法
+        function formatString(str,data){
+            return str.replace(/\{%(\w+)%\}/g,function(){
+                console.log(arguments)
+            })
+        }
         Util.ajax("data/list.json",function(data){
-           console.log(data);
+           formatString(str,data)
+           //console.log( formatString(str,data));
+           //console.log(data);
         })
     </script>
 </body>
