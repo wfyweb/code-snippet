@@ -59,7 +59,6 @@
         .price .price-text{
             color: #f55b24;
             font-size: 12px;
-            background: #f55b24;
             font-weight: 400;
             vertical-align: top;
         }
@@ -109,7 +108,7 @@
     </script>
 </head>
 <body>
-
+    <div id="app"></div>
     <script>
         //自定义工具方法
         var Util = {
@@ -132,16 +131,26 @@
             }
         };
         var str = Util.tpl("app-tpl");
+        var html = '';
         //封装一个格式化字符串的方法
         function formatString(str,data){
-            return str.replace(/\{%(\w+)%\}/g,function(){
-                console.log(arguments)
+            return str.replace(/\{%(\w+)%\}/g,function(math,$1){
+                // console.log(arguments)
+                // console.log($1)
+                return data[$1]===undefined?'':data[$1];
             })
         }
         Util.ajax("data/list.json",function(data){
-           formatString(str,data)
+           
            //console.log( formatString(str,data));
            //console.log(data);
+           var res = data.list;
+           //console.log(res);
+            for(var i=0,len=res.length;i<len;i++){
+                html+= formatString(str,res[i]);
+            }
+            console.log(html);
+            document.getElementById('app').innerHTML = html;
         })
     </script>
 </body>
