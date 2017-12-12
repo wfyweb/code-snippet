@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+         #app{text-align: center}   
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2 v-html='title'></h2>
+        <!-- <input type="text" id="add-input" v-model='newItem' @keyup.enter='addNew' placeholder="do what?"> -->
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                title:'Todos Again - vue',
+                items:[
+                    {label:'coding',isFinished:false},
+                    {label:'walking',isFinished:true}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
