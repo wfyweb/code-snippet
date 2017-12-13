@@ -14,14 +14,12 @@
 </head>
 <body>
     <div id="app">
-        <h2 v-html='title'></h2>
-        <!-- <input type="text" id="add-input" v-model='newItem' @keyup.enter='addNew' placeholder="do what?"> -->
+       <h2>{{title}}}</h2>
         <ul>
-            <li v-for="item in items" v-bind:class="{finished:item.isFinished}" v-on:click="dosomething(item)">
-                {{item.label}}
+            <li v-for="item in items" :class="{finished:item.isfinished}" @click="dosomething(item)">
+                {{item.text}}
             </li>
         </ul>
-   
     </div>
 
     <script>
@@ -29,16 +27,14 @@
             el:'#app',
             data:{
                 title:'Todos Again - vue',
-                liClass:'thisisClass',
                 items:[
-                    {label:'coding',isFinished:false},
-                    {label:'walking',isFinished:true}
-                ]
+                    {text:'coding',isfinished:true},
+                    {text:'walking',isfinished:false}
+                ],
             },
             methods:{
-                dosomething:function(e){
-                    //console.log(e)
-                    e.isFinished = !e.isFinished
+                dosomething:function(item){
+                    item.isfinished = !item.isfinished
                 }
             }
         })
