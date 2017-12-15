@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <!--1:声明式渲染-->
+       <!--<span :title = "message">
+           鼠标悬停几面后查看此动态绑定的提示信息！
+       </span>-->
+       <!--2:条件与循环-->
+       <!--<span v-if="message">你看见我了</span>-->
+        <!--3:条件与循环-->
+       <!--<ol>
+           <li v-for="item in todos">{{item.text}}</li>
+       </ol>-->
+        <!--4:处理用户输入-->
+        <!--<p>{{message}}</p>
+        <button v-on:click="changebtn">{{btn}}</button>
+        <p>{{text}}</p>
+        <input type="text" v-model="text">-->
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                // message:'页面加载与'+new Date().toLocaleString()   1:声明式渲染
+                //  message:true                                     2:条件与循环
+                todos:[                                           //3:条件与循环
+                    {text:'学习 Vue'},
+                    {text:'学习 Js'},
+                    {text:'学习 编程'}
+                ],
+                message:'hello vue!',
+                btn:'按钮',
+                text:'123'
+            },
+            methods:{
+                // 4:处理用户输入
+                changebtn:function(){
+                    console.log(this)
+                    this.message = this.message.split('').reverse().join('')
+                }
+                
+            }
+        })
+        
+    </script>
+</body>
+</html>
