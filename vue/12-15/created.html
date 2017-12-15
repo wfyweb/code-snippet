@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="a" ><br/>
+        <span v-once>我是span标签啊{{a}}</span> <br/>
+        {{number+1}}<br/>
+        {{ok?'YES':'No'}} <br>
+        {{msg}} <br>
+        {{msg.split('').reverse().join('')}}<br>
+        <!--指令-->
+        <p v-if="ok">现在看见我了</p>
+        <!--参数-->
+        <a v-bind:href="url">...</a>
+        <a v-on:click="doSomething">....</a> <br>
+        <form v-on:submit.prevent="onSubmit">...</form>
+    </div>
+    <script>
+       var app = new Vue({
+           el:'#app',
+           data:{
+               a:"my name is a",
+               msg:'my name is message',
+               url:'baidu.com',
+               number:10,
+               ok:false
+           },
+           created:function(){
+               console.log('a is:'+this.a)
+           },
+           methods:{
+               doSomething:function(){
+                   alert(1)
+               }
+           }
+       })
+    </script>
+    
+</body>
+</html>
