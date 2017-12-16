@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <p>
+            Ask a yes/no querstion:<br/>
+            提一个问题，我用Yes/No回答
+            <input type="text" v-model="querstion">
+        </p>
+        <p>
+            {{answer}}
+        </p>
+        <img :src="url" alt="...">
+    </div>
+<!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
+<!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 -->
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                title:'各位看官，我们来过个有趣的实验！',
+                querstion:'',
+                answer:'先给我个问题好嘛，baby!',
+                url:''
+            },
+            watch:{
+                querstion:function(){
+                    this.answer = '先输入一个问题 ',
+                    this.getAnswer()
+                }
+            },
+            methods:{
+                getAnswer:_.debounce(function(){
+                    if(this.querstion.indexOf('?')===-1){
+                         this.answer = '一个问题当然要带个 ? '
+                    }
+                    that = this;
+                    
+                },500)
+            }
+
+
+        })
+    </script>
+</body>
+</html>
