@@ -11,15 +11,23 @@
     <!-- 绑定 HTML Class -->
     <div id="app">
         <div v-bind:class="{ssssctive:isActive}" id="box"></div>
-
         <h1>{{className}}</h1>
+        <hr>
+
+
+        <div class="static"
+        v-bind:class="{ active: isActive, 'text-danger': hasError }">
+        </div>
     </div>
     <script>
         var app = new Vue({
             el:'#app',
             data:{
                 classNamee:'',
-                isActive:true,
+                //isActive:true,
+                //////////////////////////////
+                isActive: true,
+                hasError: false
             },
            computed:{
                 change:function(){
