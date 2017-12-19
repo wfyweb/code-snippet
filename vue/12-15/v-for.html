@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!--循环数组 2个参数（item,key）-->
+            <li v-for="(item,key) in items">{{parentMessage}}--{{item}}--{{key}}--{{item.message}}-</li>
+        </ul>
+        <ul>
+            <!--循环对象 3个参数（value,index,key）-->
+            <li v-for="(value,index,key) in object">{{value}}--{{index}}--{{key}}</li>
+        </ul>
+        <div v-for="item in items" :key="item.id"></div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                parentMessage:'Parent',
+                items:[
+                    {message:'Foo'},
+                    {message:'Bar'},
+                    'string',
+                    'name',
+                    12
+                ],
+                object:{
+                    name:'John',
+                    lastName:'Doe',
+                    age:'12'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
