@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        #app{text-align: center;}
+        .finiode{text-decoration:underline}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <input type="text" v-model="avtiver" @keyup.enter="addItem(avtiver)">
+        <ul>
+            <li v-for="item in items" :class="{finiode:item.isfiniode}" v-on:click="state(item)">{{item.test}}</li>
+        </ul>
+    </div>
+    <script>
+        // store
+        var STORE_KEY = 'todo-vue'
+        var store = {
+            faech:function(){
+                return JSON.parse(window.localStorage.getItem(STORE_KEY))
+            },
+            save:function(item){
+                window.localStorage.setItem(STORE_KEY,JSON.stringify(item))
+            }
+        }
+        //console.log(store)
+        var app = new Vue({
+            el:'#app',
+            data:{
+                title:"To Do List",
+                avtiver:'',
+                items:store.faech(),
+
+            },
+            watch:{
+                items: {
+                    handler: function (val) {
+                         console.log(val)
+                         store.save(val)
+                     },
+                    deep: true
+                }
+            },
+            methods:{
+                state:function(item){
+                    item.isfiniode = !item.isfiniode
+                },
+                addItem:function(val){
+                    this.items.push({
+                        test:val,
+                        isfiniode:false
+                    })
+                    this.avtiver = ""
+                }
+            }
+        })
+        
+
+    </script>
+</body>
+</html>
