@@ -18,30 +18,30 @@
         </ul>
     </div>
     <script>
-        // store
-        var STORE_KEY = 'todo-vue'
-        var store = {
+        // storage
+        var STORAGE_KEY = 'todo-vue'
+        var storage = {
             faech:function(){
-                return JSON.parse(window.localStorage.getItem(STORE_KEY))
+                return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]')
             },
             save:function(item){
-                window.localStorage.setItem(STORE_KEY,JSON.stringify(item))
+                window.localStorage.setItem(STORAGE_KEY,JSON.stringify(item))
             }
         }
-        //console.log(store)
+        //console.log(storage)
         var app = new Vue({
             el:'#app',
             data:{
                 title:"To Do List",
                 avtiver:'',
-                items:store.faech(),
+                items:storage.faech(),
 
             },
             watch:{
                 items: {
                     handler: function (val) {
                          console.log(val)
-                         store.save(val)
+                         storage.save(val)
                      },
                     deep: true
                 }
