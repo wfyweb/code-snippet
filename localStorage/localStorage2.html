@@ -1,0 +1,148 @@
+
+<!doctype html>
+<!--
+
+  .--,       .--,
+ ( (  \.---./  ) )
+  '.__/o   o\__.'
+     {=    =}
+      >  -  <
+     /       \
+    //       \
+   //|   .   |\
+   "'\       /'"_.-~`'-.
+      \  _  /--'
+    ___)( )(___
+   (((__) (__)))
+
+   the valiant knights of programming who toil away.
+
+-->
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Handsome</title>
+  <link rel="stylesheet" href="">
+  <style>
+      #app{
+        text-align: center;
+        margin:50px auto;
+      }
+      #app input{
+        margin-top: 20px;
+      }
+      button{
+        margin-top: 20px;
+      }
+  </style>
+ </head>
+ <body>
+    <div id="app">
+        <label >用户</label><input type="text" id="user" ><br>
+        <label >密码</label><input type="password" id="pass"><br>
+        <button id="btn">保存</button>
+    </div>
+
+  <script type="text/javascript">
+
+
+     // 1.数据初始化
+     var hashA = init()
+
+     // 2.监听并设置value
+     listenValue(hashA)
+
+     // 3.更新value
+     status(hashA)
+
+      function init(){
+        var STORE_KEY = 'STORE_KEY';
+        var Util = {
+            // 获取localStorage
+            fech:function(){
+                return JSON.parse(window.localStorage.getItem(STORE_KEY) || null)
+            },
+            // 设置localStorage
+            save:function(item){
+                window.localStorage.setItem(STORE_KEY,JSON.stringify(item))
+            },
+            // 获取input值
+            data:function(user,pass){
+              return {
+                'user': document.getElementById(user).value,
+                'pass': document.getElementById(pass).value
+              }
+            },
+        }
+        return{
+            'STORE_KEY':STORE_KEY,
+            'Util':Util
+        }
+      }
+
+
+
+      //点击监听input值
+      function listenValue(hashA){
+        btn.onclick =function setVal(){
+            var dataVal = hashA['Util'].data('user','pass');
+            return  hashA['Util'].save({user:dataVal.user,pass:dataVal.pass})
+          }
+
+      }
+    function status(hashA){
+        // input的值 无法被赋值
+        // userVal = Util.fech().user
+        // passVal = Util.fech().pass
+        if(hashA['Util'].fech() !== null ){
+            document.getElementById('user').value = hashA['Util'].fech().user;
+            document.getElementById('pass').value = hashA['Util'].fech().pass;
+        }
+        console.log(hashA['Util'].fech())
+     }
+
+
+     //  1 input的值 无法被赋值
+     //    // userVal = Util.fech().user
+     //    // passVal = Util.fech().pass
+    // 2 如果 localstorage为空 Util.fech().user会报错
+      //        document.getElementById('user').value = Util.fech().user;
+     //        document.getElementById('pass').value = Util.fech().pass;
+
+     // 更新input值
+     // function status(){
+     //    // input的值 无法被赋值
+     //    // userVal = Util.fech().user
+     //    // passVal = Util.fech().pass
+     //   return function(){
+     //        document.getElementById('user').value = Util.fech().user;
+     //        document.getElementById('pass').value = Util.fech().pass;
+     //   }
+     // }
+     // (function(){
+
+     //        document.getElementById('user').value = Util.fech().user;
+     //        document.getElementById('pass').value = Util.fech().pass;
+
+     // })()
+    //  function status(){
+    //     if(Util.fech() !== null || undefined){
+    //         document.getElementById('user').value = Util.fech().user;
+    //         document.getElementById('pass').value = Util.fech().pass;
+    //     }
+    //     console.log(Util.fech())
+    // }
+    //document.getElementById('user').value = Util.fech().user;
+           // document.getElementById('pass').value = Util.fech().pass;
+        //     if(Util.fech() !== null || undefined){
+        //     document.getElementById('user').value = Util.fech().user;
+        //     document.getElementById('pass').value = Util.fech().pass;
+        // }
+        //     console.log(typeof Util.fech() )
+  </script>
+ </body>
+</html>
