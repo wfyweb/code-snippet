@@ -52,6 +52,7 @@
 
      // 1.数据初始化
      var hashA = init()
+     var keys = hashA['Util']
 
      // 2.监听并设置value
      listenValue(hashA)
@@ -90,7 +91,7 @@
       function listenValue(hashA){
         btn.onclick =function setVal(){
             var dataVal = hashA['Util'].data('user','pass');
-            return  hashA['Util'].save({user:dataVal.user,pass:dataVal.pass})
+            return keys.save({user:dataVal.user,pass:dataVal.pass})
           }
 
       }
@@ -99,50 +100,13 @@
         // userVal = Util.fech().user
         // passVal = Util.fech().pass
         if(hashA['Util'].fech() !== null ){
-            document.getElementById('user').value = hashA['Util'].fech().user;
-            document.getElementById('pass').value = hashA['Util'].fech().pass;
+            document.getElementById('user').value = keys.fech().user;
+            document.getElementById('pass').value = keys.fech().pass;
         }
-        console.log(hashA['Util'].fech())
+        console.log(keys.fech())
      }
 
 
-     //  1 input的值 无法被赋值
-     //    // userVal = Util.fech().user
-     //    // passVal = Util.fech().pass
-    // 2 如果 localstorage为空 Util.fech().user会报错
-      //        document.getElementById('user').value = Util.fech().user;
-     //        document.getElementById('pass').value = Util.fech().pass;
-
-     // 更新input值
-     // function status(){
-     //    // input的值 无法被赋值
-     //    // userVal = Util.fech().user
-     //    // passVal = Util.fech().pass
-     //   return function(){
-     //        document.getElementById('user').value = Util.fech().user;
-     //        document.getElementById('pass').value = Util.fech().pass;
-     //   }
-     // }
-     // (function(){
-
-     //        document.getElementById('user').value = Util.fech().user;
-     //        document.getElementById('pass').value = Util.fech().pass;
-
-     // })()
-    //  function status(){
-    //     if(Util.fech() !== null || undefined){
-    //         document.getElementById('user').value = Util.fech().user;
-    //         document.getElementById('pass').value = Util.fech().pass;
-    //     }
-    //     console.log(Util.fech())
-    // }
-    //document.getElementById('user').value = Util.fech().user;
-           // document.getElementById('pass').value = Util.fech().pass;
-        //     if(Util.fech() !== null || undefined){
-        //     document.getElementById('user').value = Util.fech().user;
-        //     document.getElementById('pass').value = Util.fech().pass;
-        // }
-        //     console.log(typeof Util.fech() )
   </script>
  </body>
 </html>
