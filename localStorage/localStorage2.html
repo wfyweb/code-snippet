@@ -54,10 +54,10 @@
      var hashA = init()
      var keys = hashA['Util']
 
-     // 2.监听并设置value
+     // 2.监听并设置input值
      listenValue(hashA)
 
-     // 3.更新value
+     // 3.更新input值
      status(hashA)
 
       function init(){
@@ -95,7 +95,9 @@
           }
 
       }
-    function status(hashA){
+
+     // 更新input值
+     function status(hashA){
         // input的值 无法被赋值
         // userVal = Util.fech().user
         // passVal = Util.fech().pass
