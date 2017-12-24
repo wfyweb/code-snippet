@@ -22,17 +22,35 @@
             </li>
         </ul>
     </div>
-
+    
     <script>
+        //import Store from './store'
+        var STORAGE_KEY = 'todos-vuejs'
+        var Store =  {
+            fetch:function(){
+                return JSON.parse(window.localStorage.geyItem(STORAGE_KEY) || '[]')
+            },
+            save:function(items){
+                window.localStorage.setItem(STORAGE_KEY,JSON.stringify(items))
+            }
+        }
+        //console.log(Store)
         var app = new Vue({
             el:'#app',
             data:{
                 newItem:'',
                 title:'Todos Again - vue',
-                items:[
-                    {text:'coding',isfinished:true},
-                    {text:'walking',isfinished:false}
-                ],
+                items:[]
+            },
+            watch:{
+                items:{
+                    handler:function(val){
+                       // console.log('v: '+val,'o: '+oldVal)
+                        console.log(val) 
+                        Store.save(val)
+                    },
+                    deep:true
+                }
             },
             methods:{
                 dosomething:function(item){
@@ -47,6 +65,8 @@
                 }
             }
         })
+
+       
     </script>
 </body>
 </html>
