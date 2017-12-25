@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>    
+        myFn(3,4,6);
+
+        // 奇怪的需求 计算整个参数的和
+        
+        // function myFn(){
+        //     var he = arguments[0]+arguments[1]+arguments[2]
+        //     console.log(he)
+        // }
+        function myFn(){
+            var argu = 0;
+            for(var i=0,len=arguments.length;i<len;i++){
+                argu+=arguments[i]
+            }
+            console.log(argu)
+        }
+
+        sum(1,1000);
+        // 奇怪的需求 计算整个最小值到最大值的和
+
+
+        //循环方法
+        // function sum(min,max){
+        //     var num = 0;
+        //     for(var i=min;i<=max;i++){
+        //         num +=i
+        //     }
+        //     console.log(num)
+        // }
+
+        //递归发法
+        function factorical(min,max){
+        　　if(max<=min){
+        　　　　return min;
+        　　}
+        　　else{
+        　　　　return max+factorical(min,max-1);
+        　　}
+        }
+        factorical(1,100)
+        //高斯算法
+        function sum(min,max){
+            return (min+max)*(max/2)
+        }
+    </script>
+</body>
+</html>
