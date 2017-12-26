@@ -42,8 +42,8 @@
                 // `_.debounce` 函数 (及其近亲 `_.throttle`) 的知识，
                 // 请参考：https://lodash.com/docs#debounce
                 getAnswer:_.debounce(function(){
-                    if(this.querstion.indexOf('?')=== -1){
-                        this.answer = 'Questions usually contain a question mark. ;-)'
+                    if(this.querstion.indexOf('？')=== -1 && this.querstion.indexOf('?') === -1){
+                        this.answer = 'Questions usually contain a question mark. '
                         return
                     }
                     this.anser = 'Thinking...'
