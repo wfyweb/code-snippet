@@ -10,22 +10,57 @@
     <hr>
     <div id="app">
         <ul>
-            <li v-for='item in items'>{{item}}</li>
+            <li v-for='item in sortItem'>{{item}}</li><hr>
+            <li v-for='(item,index) in sortObj'>{{index}}--{{item.name}}--{{item.age}}</li>
         </ul>
     </div>
     <script type="text/javascript">
         var app = new Vue({
             el:'#app',
             data:{
-                items:[23,64,13,13,14,324,5,24]
+                items:[23,64,13,13,14,324,5,24],
+                infoObj:[
+                    {
+                        name:"张三",
+                        sex:'female',
+                        age:30
+                    },
+                    {
+                        name:"李四",
+                        sex:'male',
+                        age:20
+                    },
+                    {
+                        name:"王五",
+                        sex:'female',
+                        age:40
+                    }
+                ]
             },
             //排序
             computed:{
                 sortItem:function(){
-                    return this.items.sort()
+                    return this.items.sort(sortItem)
+                },
+                sortObj:function(){
+                    return sortObj(this.infoObj,'age')
                 }
             }
         })
+
+         // 数组排序方法
+         function sortItem(a,b){
+                return a-b
+         }
+         //数组对象排序方法
+         function sortObj(array,obj){
+             return array.sort(function(x,y){
+                 var a = x[obj]
+                 var b = y[obj]
+                 return a - b
+             })
+        }
+        
     </script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-on 案例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on 事件监听器</h1>
+    <hr>
+    <div id="app">
+        <p>本场比赛得分：<span>{{item}}</span></p>
+        <p>
+            <button v-on:click="plus">加分</button>
+            <button @click="redu">减分</button>
+        </p>
+        <p>
+            <input type="text" v-model="index" @keyup.enter="keydow">
+        </p>
+       
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                item:0,
+                index:''
+            },
+            methods:{
+                plus:function(){
+                    this.item++
+                },
+                redu:function(){
+                   if(this.item>0){
+                       this.item--
+                   }else{
+                       this.item=0
+                   }
+                },
+                keydow:function(){
+                    if(this.index !== null && this.index !== ""){
+                        this.item += parseInt(this.index) 
+                        this.index = '';
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>
