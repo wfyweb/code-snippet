@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.set 全局操作</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        <p>{{num}}</p>
+        <p><button onclick="add()">Add</button></p>
+    </div>
+
+
+    <script type="text/javascript">
+        function add(){
+            // 1.直接操作外部数据
+            //outData.num++;
+            // 2.用Vue对象的方法添加
+            //app.num++;
+            // 3.用Vue.set改变
+            Vue.set(outData,'num',2)
+        }
+        var outData = {
+            num:10,
+
+        } 
+        var app = new Vue({
+            el:'#app',
+            data:outData
+        })
+    </script>
+</body>
+</html>
