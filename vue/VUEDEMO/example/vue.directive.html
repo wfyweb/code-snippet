@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.directive</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>HelloWorld</h1>
+    <hr>
+    <div id="app">
+       <span>{{num}}</span> 
+       <button @click="add">Add</button>
+
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+              num:10,
+              color:'green',
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                }
+            }
+        })
+        Vue.direvtive('wfy',function(el,bind,vnode){
+            el.style = 'color'+binding.value;
+        })
+    </script>
+</body>
+</html>
