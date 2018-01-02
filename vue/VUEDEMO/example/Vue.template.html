@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template 制作模版三种写法</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Template 制作模版三种写法</h1>
+    <hr>
+    <div id="app">
+        <!-- 1 -->
+        <!-- <template></template> -->
+    </div>
+        <!-- 2 -->
+        <template id="demo2">
+            <div>
+                    <h2 style="color:red">我是模版h2!</h2>
+                    <h2 style="color:red">我是模版h2!</h2>
+            </div>
+        </template>
+        
+        <!-- <div id="demo2">
+                <h2 style="color:red">我是模版h2!</h2>
+                <h2 style="color:red">我是模版h3!</h2>
+        </div> -->
+
+
+        <!-- <script type="x-template" id="demo3">
+                <h2 style="color:red">我是模版h3!</h2>
+        </script> -->
+        
+    
+    
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{},
+            // 一、直接写在选项里的模板
+            // template:`<h2 style="color:red">我是模版h2!</h2>`
+
+            // 二、写在<template>标签里的模板
+             template:'#demo2',
+
+            // 三、写在<script>标签里的模板
+            //template:'#demo3'
+
+        })
+    </script>
+</body>
+</html>
