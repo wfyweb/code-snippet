@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.directive自定义指令</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <span v-wfy="color"> {{num}} </span>
+        <p><button @click = 'add'>add</button></p>
+    </div>
+
+    <script type="text/javascript"> 
+        Vue.directive('wfy',function(el,binding,vnode){
+            el.style = 'color:'+binding.value;
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:10,
+                color:'red'
+            },
+            methods:{
+                add:function(){
+                    this.num++
+                }
+            }
+        })
+    </script>
+</body>
+</html>
