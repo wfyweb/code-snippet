@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-1</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-1</h1>
+    <hr>
+    <div id="app">
+        <wfy></wfy><wang></wang>
+    </div>
+    
+
+    <script type="text/javascript">
+        // 一、全局化注册组件
+        Vue.component('wang',{
+            template:`<h2>全局注册的wang标签</h2>`
+        })
+        
+        var app = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            // 二、局部注册组件
+            components:{
+                "wfy":{
+                    template:`<span>局部注册的wfy标签</span>`
+                }
+            }
+                
+            
+        })
+    </script>
+</body>
+</html>
