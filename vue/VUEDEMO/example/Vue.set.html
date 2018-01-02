@@ -10,22 +10,38 @@
     <hr>
     <div id="app">
         <p>{{num}}</p>
+        <p v-for="item in arr">{{item}}</p>
         <p><button onclick="add()">Add</button></p>
     </div>
 
 
     <script type="text/javascript">
+
+    // 由于Javascript的限制，Vue不能自动检测以下变动的数组。
+
+    //     *当你利用索引直接设置一个项时，vue不会为我们自动更新。
+
+    //     *当你修改数组的长度时，vue不会为我们自动更新。
+
+
+
+
         function add(){
             // 1.直接操作外部数据
             //outData.num++;
             // 2.用Vue对象的方法添加
             //app.num++;
             // 3.用Vue.set改变
-            Vue.set(outData,'num',2)
+            //Vue.set(outData,'num',2)
+
+
+            // 由于Javascript的限制
+            // app.arr[0] = 'd'
+            Vue.set(app.arr,0,'d')
         }
         var outData = {
             num:10,
-
+            arr:['aaa','bbb','ccc']
         } 
         var app = new Vue({
             el:'#app',
