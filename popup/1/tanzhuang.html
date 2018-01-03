@@ -1,0 +1,86 @@
+
+<!doctype html>
+<!--
+
+  .--,       .--,
+ ( (  \.---./  ) )
+  '.__/o   o\__.'
+     {=    =}
+      >  -  <
+     /       \
+    //       \
+   //|   .   |\
+   "'\       /'"_.-~`'-.
+      \  _  /--'
+    ___)( )(___
+   (((__) (__)))
+
+   the valiant knights of programming who toil away.
+
+-->
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Handsome</title>
+  <script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+  <script src="jquery.hoverdir.js"></script>
+  <style>
+    .modal .bg_layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #666666;
+        opacity: 0.5;
+        z-index: 999;
+    }
+    .modal .popBox {
+        position: fixed;
+        left: 50%;
+        top: -100%;
+        background:#36AFFB;
+        z-index: 1000;
+        width: 75%;
+        min-height: 70vh;
+        margin-left: -37%;
+        border-radius: 5px;
+        font-weight: bold;
+        color: #535e66;
+    }
+  </style>
+
+ </head>
+ <body>
+    <div class="modal">
+       <div class="bg_layer"></div>
+       <div class="popBox"></div>
+    </div>
+
+
+ <!-- ———————————————————— 模态框 js ———————————————————— -->
+<script type="text/javascript">
+    $(function(){
+        $(".popBox").show().animate({top:"20%"},500,"swing");
+        setTimeout(colse,3000)
+    })
+    // $(".sgBtn").click(function(){
+    //    colse();
+    // });
+    // $(".popBox").click(function(){
+    //     colse();
+    // });
+    function colse(){
+        $(".popBox").animate({top:"200%"},500,function(){
+            $(".popBox").hide().css({top:"-100%"})
+        });
+        $(".modal").hide(700);
+    }
+</script>
+
+ </body>
+</html>

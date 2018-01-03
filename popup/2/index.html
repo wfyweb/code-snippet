@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://www.jq22.com/demo/jquery-qp-141230174052/js/jquery.js"></script>
+    <style type="text/css">
+        .all{width: 100%; height: 100%;display:none;}
+        img{border:0}
+    </style>
+</head>
+<body>
+    <div class="all"></div>
+
+    <script>
+        $(function(){
+            $(".all").html(TopAd()).slideDown(1000)
+            //过两秒显示 showImage(); 内容
+            setTimeout("showImage();",2000);
+            console.log(location);
+        });
+
+        function TopAd(){
+            var strTopAd="";
+            return strTopAd=`<div id=adimage style="width:980px;margin: 0 auto;">
+                            <div id=adBig>
+                                <a href="http://www.wfyweb.com" target=_blank>
+                                    <img title=YUANXIN src="images/top_lanrentuku_b.jpg" border=0>
+                                </a>
+                            </div>
+                            <div id=adSmall style="display: none">
+                                <a href=\"http://www.wfyweb.com/\" target=_blank>
+                                    <img src=\"images/top_090901_s.gif\" />
+                                </a>
+                            </div>`;
+            
+        }
+        function showImage(){
+            $("#adBig").slideUp(1000,function(){$("#adSmall").slideDown(1000);});
+        }
+    </script>
+</body>
+</html>
