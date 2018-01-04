@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-2-props</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-2-props</h1>
+    <hr>
+    <!--1.-->
+    <div id="app1">
+        <panda1 href="中国"></panda1>
+    </div>
+    <!--2-->
+    <div id="app2">
+       <panda2 v-bind:href="message"></panda2>
+    </div>
+    <div id="app3">
+        <panda3 for-href="China"></panda3>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+                el:'#app1',
+                components:{
+                    "panda1":{
+                        template:`<div> 熊猫来自 {{href}}</div>`,
+                        props:['href']
+                    }
+                }
+                
+            })
+       
+        var app2 = new Vue({
+            el:'#app2',
+            data:{
+                message:'sichuan',
+            },
+            components:{
+                "panda2":{
+                    template:`<div>大家好，我是panda2，我来自{{href}}</div>`,
+                    props:['href']
+                }
+            }
+        })
+
+        var app3 = new Vue({
+            el:'#app3',
+            components:{
+                "panda3":{
+                    template:`<div>小驼峰命名 {{forHref}}</div>`,
+                    props:['forHref']
+                }
+            }
+        })
+    </script>
+</body>
+</html>

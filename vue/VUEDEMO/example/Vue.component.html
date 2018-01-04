@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-1</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-1</h1>
+    <hr>
+    <div id="app">
+       <wfy></wfy>
+       <wow></wow>
+    </div>
+    <script type="text/javascript">
+        //注册全局组件
+        Vue.component('wfy',{
+            template:`<div style="color:red">全局化注册的wfy标签</div>`
+        })
+
+        
+        var app = new Vue({
+            el:'#app',
+            data:{},
+            components:{
+                'wow':{
+                    template:`<div>我是wow自定义标签</div>`
+                }
+            }
+        })
+    </script>
+</body>
+</html>
