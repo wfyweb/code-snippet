@@ -1,0 +1,113 @@
+
+<!doctype html>
+<!--
+
+  .--,       .--,
+ ( (  \.---./  ) )
+  '.__/o   o\__.'
+     {=    =}
+      >  -  <
+     /       \
+    //       \
+   //|   .   |\
+   "'\       /'"_.-~`'-.
+      \  _  /--'
+    ___)( )(___
+   (((__) (__)))
+
+   the valiant knights of programming who toil away.
+
+-->
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Handsome</title>
+  <link rel="stylesheet" href="">
+  <style type="text/css">
+      #loading{
+        display: block;
+        text-decoration:none;
+        color:#fff;
+        width: 80px;
+        height: 40px;
+        margin:100px auto 0;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 4px;
+        font-family: 'Microsoft Yahei';
+        text-shadow: 0px 0px 5px #000;
+        background:#31AAFA;
+      }
+      #over{
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top:0;
+        left: 0;
+        display: none;
+        background: #999;
+        opacity: .5;
+        z-index: 1000;
+      }
+      #layout{
+        display: none;
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        width: 20%;
+        height: 20%;
+        z-index: 1001;
+        text-align:center;
+      }
+      #box{
+        text-align: center;
+        margin:50px auto;
+        width: 300px;
+        display: none;
+      }
+  </style>
+ </head>
+ <body>
+    <div class="current">
+        <a href="javascript:;" id="loading" >Loading</a>
+    </div>
+    <div id="over">
+
+    </div>
+    <div id="layout">
+        <img src="http://images.cnblogs.com/cnblogs_com/qiuyan/477435/o_31.gif" alt="">
+    </div>
+    <div id="box">
+        <p>
+            一直以来，人才都是企业最大的财富。百度CEO李彦宏也说，“我们的办公室、服务器会折旧，但一个公司始终在增值的就是公司的每一位员工。”现在早已不是推崇曹公“唯才是举”的时代，企业所需要的人才也不仅仅是能力出众。企业间的竞争，说到底也是团队的竞争。
+        </p>
+    </div>
+  <script type="text/javascript">
+    // https://www.cnblogs.com/qiuyan/archive/2013/05/05/3060864.html
+    var btn = document.querySelector('#loading');
+    btn.onclick = function(){
+        console.log(1)
+        box.style.display = 'none';
+        Loading()
+    };
+
+    window.onload = function(){
+        Loading()
+    };
+
+    function Loading(){
+        over.style.display = 'block';
+        layout.style.display = 'block';
+        setTimeout(function(){
+            over.style.display = 'none';
+            layout.style.display = 'none';
+            box.style.display = 'block';
+        },2000)
+    };
+  </script>
+ </body>
+</html>

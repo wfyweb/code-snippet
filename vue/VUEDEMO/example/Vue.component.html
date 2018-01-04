@@ -9,29 +9,24 @@
     <h1>component-1</h1>
     <hr>
     <div id="app">
-        <wfy></wfy><wang></wang>
+       <wfy></wfy>
+       <wow></wow>
     </div>
-    
-
     <script type="text/javascript">
-        // 一、全局化注册组件
-        Vue.component('wang',{
-            template:`<h2>全局注册的wang标签</h2>`
+        //注册全局组件
+        Vue.component('wfy',{
+            template:`<div style="color:red">全局化注册的wfy标签</div>`
         })
+
         
         var app = new Vue({
             el:'#app',
-            data:{
-
-            },
-            // 二、局部注册组件
+            data:{},
             components:{
-                "wfy":{
-                    template:`<span>局部注册的wfy标签</span>`
+                'wow':{
+                    template:`<div>我是wow自定义标签</div>`
                 }
             }
-                
-            
         })
     </script>
 </body>
