@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>methods option</h1>
+    <hr>
+    <div id="app">
+        <p>{{num}}</p>
+        <button @click="jia(2,$event)">加</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:10
+            },
+            methods:{
+                jia:function(a,b){
+                   if(a){
+                       this.num+=a;
+                       console.log(a,b)
+                   }else{
+                       this.num++;
+                   }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
