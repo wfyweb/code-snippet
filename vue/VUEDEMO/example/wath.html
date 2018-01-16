@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wath option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>wath option</h1>
+    <hr>
+    <div id="app">
+        <p>今日温度：{{num}}°C</p>
+        <p>穿衣建议:{{items}}</p>
+        <button @click="add">添加温度</button>
+        <button @click="reduce">减少温度</button>
+    </div>
+    <script>
+        var list = ['T恤短袖','夹克长裙','棉衣羽绒服'];
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:10,
+                items:'夹克长裙'
+            },
+            methods:{
+                add:function(){
+                    this.num+=4;
+                },
+                reduce:function(){
+                    this.num-=4;
+                }
+            },
+            // watch:{
+            //     num:function(newVlue,oldVlue){
+            //         if(newVlue<=0){
+            //             this.items = list[2]
+            //         }else if(newVlue>0 && newVlue<26){
+            //             this.items = list[1]
+            //         }else{
+            //             this.items = list[0]
+            //         }
+            //     }
+            // }
+        })
+        app.$watch("num",function(newVlue,oldVlue){
+                    if(newVlue<=0){
+                        this.items = list[2]
+                    }else if(newVlue>0 && newVlue<26){
+                        this.items = list[1]
+                    }else{
+                        this.items = list[0]
+                    }
+                })
+    </script>
+</body>
+</html>

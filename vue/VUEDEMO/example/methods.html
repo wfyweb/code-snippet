@@ -8,24 +8,95 @@
 <body>
     <h1>methods option</h1>
     <hr>
-    <div id="app">
+    
+    <div id="app1">
         <p>{{num}}</p>
-        <button @click="jia(2,$event)">加</button>
+        <button @click="jia">加</button>
+    </div>
+    <hr>
+    一、methods中参数的传递
+    <div id="app2">
+        <p>{{num}}</p>
+        <button @click="jia(2)">加</button>
+    </div>
+    <hr>
+    二、methods中的$event参数
+    <div id="app3">
+        <p>{{num}}</p>
+        <button @click="jia($event)">加</button>
+    </div>
+    <hr>
+    三、native  给组件绑定构造器里的原生事件。
+    <div id="app4">
+        <p><btn @click.native="jia(3)"></btn></p>
+    </div>
+    <hr>
+    四、作用域外部调用构造器里的方法(不推荐)
+    <div id="app5">
+        <p>{{num}}</p>
+        <p><button onclick="app5.add(4)">加</button></p>
     </div>
     <script>
-        var app = new Vue({
-            el:"#app",
+        var app1 = new Vue({
+            el:"#app1",
             data:{
                 num:10
             },
             methods:{
-                jia:function(a,b){
-                   if(a){
-                       this.num+=a;
-                       console.log(a,b)
-                   }else{
-                       this.num++;
-                   }
+                jia:function(){
+                   this.num++;
+                }
+            }
+        })
+        var app2 = new Vue({
+            el:"#app2",
+            data:{
+                num:12
+            },
+            methods:{
+                jia:function(a){
+                    if(a){
+                        this.num+=a;
+                    }else{
+                        this.num++;
+                    }
+                    
+                }
+            }
+        })
+        var app3 = new Vue({
+            el:"#app3",
+            data:{
+                num:12
+            },
+            methods:{
+                jia:function(a){
+                    console.log(a)
+                }
+            }
+        })
+        var btn ={
+            template:`<button>组件ADD</button>`
+        }
+        var app4 = new Vue({
+            el:"#app4",
+            components:{
+                "btn":btn
+            },
+            methods:{
+                jia:function(a){
+                    console.log(a)
+                }
+            }
+        })
+        var app5 = new Vue({
+            el:"#app5",
+            data:{
+                num:10
+            },
+            methods:{
+                add:function(a){
+                    this.num+=a;
                 }
             }
         })

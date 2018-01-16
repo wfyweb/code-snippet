@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mixins option</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Mixins Option</h1>
+    <hr>
+    <div id="app">
+        <p>{{message}}</p>
+        <p><button @click="add">Add</button></p>
+    </div>
+
+    <script type="text/javascript">
+        var addLog = {
+            updated:function(){
+                console.log("更新数据了"+this.message)
+            }
+        } 
+        Vue.mixin({
+            updated:function(){
+                console.log("我的全局的混入方法")
+            }
+        })
+        
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:1,
+            },
+            methods:{
+                add:function(){
+                    this.message++;
+                }
+            },
+            updated:function(){
+                console.log("构造器里的updated方法。")
+            },
+            mixins:[addLog]
+        })
+        
+    </script>
+</body>
+</html>
