@@ -1,3 +1,4 @@
+/**app.wxss**/
 text{
   font-family: Microsoft Yahei;
 }
