@@ -10,19 +10,22 @@
       <image src='/images/iqiyi.png'></image>
     </swiper-item>
   </swiper>
-  <view class='new-container'>
-    <view class='user-title'>
-      <image class="user-avatar" src='/images/avatar/3.png'></image>
-      <text class='user-date'>Nov 18 2018</text>
+  <block wx:for="{{postList}}" >
+    <view class='new-container' bindtap="onTap">
+      <view class='user-title'>
+        <image class="user-avatar" src='{{item.avatar}}'></image>
+        <text class='user-date'>{{item.date}}</text>
+      </view>
+      <text class='new-name'>{{item.title}}</text>
+      <image class='new-pic' src='{{item.imgSrc}}'></image>
+      <text class='new-into'>{{item.content}}</text>
+      <view class='user-comment'>
+        <image class='like-image' src='/images/icon/chat1.png'></image>
+        <text class='like-font'>{{item.reading}}</text>
+        <image class='like-image' src='/images/icon/view.png'></image>
+        <text class='like-font'>{{item.collection}}</text>
+      </view>
     </view>
-    <text class='new-name'>正是虾肥蟹壮时</text>
-    <image class='new-pic' src='/images/post/crab.png'></image>
-    <text class='new-into'>每当秋高气爽时，芳香扑鼻的桂花，如一银河的星星落到了枝头，皎洁的月光，如薄薄的晨雾，一层一层地铺满了星星点点的夜空，一只只肥美的大闸蟹也到了收获的季节。菊黄蟹正肥，品尝秋之味。</text>
-    <view class='user-comment'>
-      <image class='like-image' src='/images/icon/chat1.png'></image>
-      <text class='like-font'>95</text>
-      <image class='like-image' src='/images/icon/view.png'></image>
-      <text class='like-font'>22</text>
-    </view>
-  </view>
+  </block>
+
 </view>

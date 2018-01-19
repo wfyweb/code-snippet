@@ -29,7 +29,6 @@ swiper image{
   width:60rpx;
   height: 60rpx;
   vertical-align: middle;
-  margin-left: 25rpx;
   
 }
 .user-date{

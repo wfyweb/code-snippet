@@ -1,0 +1,87 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.head-content{
+  position: relative;
+  width: 100%;
+}
+.head-images{
+  width:100%;
+}
+.auto{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  margin-left: -50rpx;
+  margin-top:-50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  opacity: 0.4;
+}
+.author-date{
+  width:100%;
+  margin-left: 30rpx;
+  margin-top:20rpx; 
+   flex-direction: row; 
+}
+.avatar{
+  width: 64rpx;
+  height: 64rpx;
+  vertical-align:middle;
+}
+.author{
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  font-weight: 300;
+  line-height: 60rpx;
+  color:#666;
+}
+.const-text{
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color:#999;
+}
+.date{
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color:#999;
+}
+.title{
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+  font-size: 38rpx;
+  font-weight: 700;
+  color:#4b556c;
+}
+.circle-img{
+  float: right;
+  margin-right:40rpx;
+  vertical-align: middle;
+}
+.circle-img image{
+  width: 90rpx;
+  height:90rpx;
+}
+.share{
+  margin-left: 30rpx;
+}
+.horizon{
+  width: 660rpx;
+  height: 2rpx;
+  background-color: #e5e5e5;
+  vertical-align: middle;
+  position: relative;
+  top:45rpx;
+  margin:0 auto;
+  z-index: -99;
+}
+.detail{
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  font-size:24rpx;
+  line-height: 42rpx;
+  letter-spacing: 2rpx;
+  color:#666;
+}
