@@ -8,9 +8,11 @@ Page({
    */
   data: {
   },
-  onTap:function(){
+  onPostTap:function(event){
+    console.log(event);
+    var postId = event.currentTarget.dataset.postId
     wx.navigateTo({
-      url: 'posts-detail/posts-detail',
+      url: 'posts-detail/posts-detail?id='+postId
     })
   },
   /**
