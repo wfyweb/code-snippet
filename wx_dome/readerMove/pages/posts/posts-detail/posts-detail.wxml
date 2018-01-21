@@ -1,24 +1,25 @@
 <view class="container">
   <view class='head-content'>
-    <image class='head-images' src='/images/post/bl.png'></image>
+    <image class='head-images' src='{{postData.headImgSrc}}'></image>
     <image class='auto' src='/images/music/music-start.png'></image>
   </view>
   <view class='author-date'>
-    <image class="avatar" src='/images/avatar/3.png'></image>
-    <text class='author'>知乎</text>
+    <image class="avatar" src='{{postData.avatar}}'></image>
+    <text class='author'>{{postData.author}}</text>
     <text class="const-text">发表于</text>
-    <text class="date">三天前</text>
+    <text class="date">{{postData.dataTime}}</text>
   </view>
-  <text class="title">正是虾肥蟹壮时</text>
+  <text class="title">{{postData.title}}</text>
   <view class='tool'>
     <view class="circle-img">
-      <image src="/images/icon/collection.png"></image>
+      <image wx:if="{{collection}}" catchtap="onCollectionTap" src="/images/icon/collection.png"></image>
+      <image wx:else catchtap="onCollectionTap" src="/images/icon/collection-anti.png"></image>
       <image class="share" src="/images/icon/share.png"></image>
     </view>
     <view class='horizon'></view>
   </view>
   <text class='detail'>
-    本文档将带你一步步创建完成一个微信小程序，并可以在手机上体验该小程序的实际效果。这个小程序的首页将会显示欢迎语以及当前用户的微信头像，点击头像
+    {{postData.content}}
   </text>
   
 </view>

@@ -11,7 +11,7 @@ var local_database = [
     author: '李白',
     dataTime: '24time',
     detail: '并可以在手机上体验该小程序的实际效果。',
-    postId: 1
+    postId: 0
   },
   {
     //按住alt + shift + f可以格式化代码
@@ -26,7 +26,7 @@ var local_database = [
     author: '李白2',
     dataTime: '24time',
     detail: '并可以在手机上体验该小程序的实际效果。',
-    postId: 2
+    postId: 1
   },
   {
     //按住alt + shift + f可以格式化代码
@@ -41,7 +41,7 @@ var local_database = [
     author: '李白3',
     dataTime: '24time',
     detail: '并可以在手机上体验该小程序的实际效果。',
-    postId: 3
+    postId: 2
   },
   {
     //按住alt + shift + f可以格式化代码
@@ -56,7 +56,7 @@ var local_database = [
     author: '李白4',
     dataTime: '24time',
     detail: '并可以在手机上体验该小程序的实际效果。',
-    postId: 4
+    postId: 3
   },
 ]
 module.exports = {

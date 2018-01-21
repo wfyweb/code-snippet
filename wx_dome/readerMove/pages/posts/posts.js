@@ -9,8 +9,7 @@ Page({
   data: {
   },
   onPostTap:function(event){
-    console.log(event);
-    var postId = event.currentTarget.dataset.postId
+    var postId = event.currentTarget.dataset.postid
     wx.navigateTo({
       url: 'posts-detail/posts-detail?id='+postId
     })
@@ -19,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(postData)
+    //console.log(postData)
     this.setData({
       postList: postData.postList
     })
