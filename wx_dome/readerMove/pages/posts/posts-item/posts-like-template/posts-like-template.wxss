@@ -1,0 +1,16 @@
+.user-comment{
+  width: 100%;
+  height: 70rpx;
+}
+.like-image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 24rpx;
+  vertical-align: middle;
+}
+.like-font{
+  color: #676767;
+  font-size: 28rpx;
+  line-height: 32rpx;
+  margin-left: 10rpx;
+}

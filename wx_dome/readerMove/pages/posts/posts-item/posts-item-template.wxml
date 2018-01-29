@@ -1,17 +1,13 @@
-<template name="postsItem">
+<import src="/pages/posts/posts-item/posts-like-template/posts-like-template.wxml" />
+<template name="postItem">
   <view class='new-container'>
-    <view class='user-title'>
-      <image class="user-avatar" src='{{avatar}}'></image>
-      <text class='user-date'>{{date}}</text>
+      <view class='user-title'>
+        <image class="user-avatar" src='{{avatar}}'></image>
+        <text class='user-date'>{{date}}</text>
+      </view>
+      <text class='new-name'>{{title}}</text>
+      <image class='new-pic' src='{{imgSrc}}'></image>
+      <text class='new-into'>{{content}}</text>
+      <template is="postLike" data="{{reading,collection}}" />
     </view>
-    <text class='new-name'>{{title}}</text>
-    <image class='new-pic' src='{{imgSrc}}'></image>
-    <text class='new-into'>{{content}}</text>
-    <view class='user-comment'>
-      <image class='like-image' src='/images/icon/chat1.png'></image>
-      <text class='like-font'>{{reading}}</text>
-      <image class='like-image' src='/images/icon/view.png'></image>
-      <text class='like-font'>{{collection}}</text>
-    </view>
-  </view>
 </template>

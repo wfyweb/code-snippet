@@ -2,7 +2,11 @@
 <view class='container'>
   <image class="user-avatar"src='/images/avatar.jpg'></image>
   <text class='user-name'>Hello Welcome</text>
-  <view class='motto-container' bindtap='onTap'>
-    <text class='motto' >开启小程序之旅</text>
-  </view>
+   <view class='motto-container' catchtap='onTap'>
+      <text class='motto' >开启小程序之旅</text>
+  </view> 
+    <!-- 跳转到新页面 -->
+    <!-- <navigator url="/pages/posts/posts" class='motto-container'>
+       <text class='motto' >开启小程序之旅</text>
+    </navigator> -->
 </view>

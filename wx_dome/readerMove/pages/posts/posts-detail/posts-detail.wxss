@@ -51,6 +51,7 @@
 .title{
   margin-left: 40rpx;
   margin-top: 20rpx;
+  margin-bottom: 20rpx;
   font-size: 38rpx;
   font-weight: 700;
   color:#4b556c;
