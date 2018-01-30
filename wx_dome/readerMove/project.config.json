@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.7.3",
 	"appid": "touristappid",
-	"projectname": "readerMove",
+	"projectname": "ReadMove",
 	"condition": {
 		"search": {
 			"current": -1,

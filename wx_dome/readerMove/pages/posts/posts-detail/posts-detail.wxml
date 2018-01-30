@@ -1,7 +1,7 @@
 <view class="container">
   <view class='head-content'>
     <image class='head-images' src='{{postData.headImgSrc}}'></image>
-    <image class='auto' src='/images/music/music-start.png'></image>
+    <image class='auto' catchtap="onMusicTap" src="{{isPlayingMusic?'/images/music/music-stop.png':'/images/music/music-start.png'}}"></image>
   </view>
   <view class='author-date'>
     <image class="avatar" src='{{postData.avatar}}'></image>

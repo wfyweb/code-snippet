@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    isPlayingMusic:false
   },
 
   /**
@@ -130,6 +130,25 @@ Page({
 
     })
   },
-
+  onMusicTap:function(){
+    var isPlayingMusic = this.data.isPlayingMusic;
+    var postDataMusic = postData.postList[this.data.currentId].music;
+    console.log(isPlayingMusic)
+    if (isPlayingMusic){
+      wx.pauseBackgroundAudio();
+      this.setData({
+        isPlayingMusic:false
+      })
+    }else{
+      wx.playBackgroundAudio({
+        dataUrl: postDataMusic.url,
+        title: postDataMusic.title,
+        coverImgUrl: postDataMusic.coverImg
+      })
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
+  }
   
 })
