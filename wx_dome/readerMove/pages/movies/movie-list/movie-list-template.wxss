@@ -5,9 +5,9 @@
   margin-bottom:30rpx;
   background: #fff; 
 }
-.inner-container{
+/* .inner-container{
   margin: 0 auto;
-}
+} */
 .movie-head{
   padding: 30rpx 20rpx 22rpx;
   /* display: flex;

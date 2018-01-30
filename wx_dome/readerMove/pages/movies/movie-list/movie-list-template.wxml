@@ -10,9 +10,14 @@
         </view>
       </view>
       <view class='movies-container'>
+      <scroll-view scroll-x="true" style='white-space: nowrap;'>
         <template is="movieTemplate" />
         <template is="movieTemplate" />
         <template is="movieTemplate" />
+        <template is="movieTemplate" />
+        <template is="movieTemplate" />
+      </scroll-view>
+        
       </view>
     </view>
   </view>
