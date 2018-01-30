@@ -1,12 +1,13 @@
 var postData = require("../../../data/post-data.js");
-
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isPlayingMusic:false
+    isPlayMusic:false,
+    isMusicBg:false,
   },
 
   /**
@@ -15,16 +16,16 @@ Page({
   onLoad: function (options) {
     //文章索引
     var id = options.id;
-
     this.setData({
       currentId: id,
-      postData:postData.postList[id]
+      postData:postData.postList[id],
     })
-    // var post_collection={
-    //     1:true,
-    //     2:false,
-    //     3:false
-    // }
+    if (app.globalData.globalMusic && app.globalData.globalPostId === id){
+      this.setData({
+        isPlayMusic: true,
+        isMusicBg:true
+      })
+    }
     var postsCollection = wx.getStorageSync("post-collection");
     if (postsCollection){
       var postCollection = postsCollection[id];
@@ -36,6 +37,32 @@ Page({
       postsCollection[id] = false;
       wx.setStorageSync("post-collection", postsCollection);
     }
+    var that = this;
+    //总音乐播放
+    wx.onBackgroundAudioPlay(function(){
+      app.globalData.globalMusic=true;
+      app.globalData.globalPostId = that.data.currentId
+      that.setData({
+        isPlayMusic: true,
+        isMusicBg:true
+      })
+    })
+    //总音乐暂停
+    wx.onBackgroundAudioPause(function () {
+      app.globalData.globalMusic = false;
+      that.setData({
+        isPlayMusic: false,
+        isMusicBg: true
+      })
+    })
+    //总音乐关闭
+    wx.onBackgroundAudioStop(function () {
+      app.globalData.globalMusic = false;
+      that.setData({
+        isPlayMusic: false,
+        isMusicBg: false
+      })
+    })
 
   },
   // 点击收藏
@@ -146,9 +173,16 @@ Page({
         coverImgUrl: postDataMusic.coverImg
       })
       this.setData({
-        isPlayingMusic: true
+        isPlayingMusic: true,
+        isPlayMusic: true
       })
     }
   }
   
 })
+
+
+//音乐 =》
+// 1.点击控制开关，音乐背景图片响应，
+// 2.与总音乐开关响应，
+// 3.返回上级，页面开关保持一致

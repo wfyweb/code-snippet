@@ -1,3 +1,4 @@
+@import "/pages/posts/posts-item/posts-like-template/posts-like-template.wxss";
 .new-container{
   display:flex;
   flex-direction:column;
@@ -8,6 +9,7 @@
   border-bottom:1px solid #ededed;
   background: #fff;
   padding-bottom:5rpx; 
+  
 }  
 .user-title{
   margin:10rpx 0 20rpx 10rpx;
@@ -44,20 +46,4 @@
     margin-bottom: 20rpx;
     margin-left: 20rpx;
     line-height: 40rpx;
-}
-.user-comment{
-  width: 100%;
-  height: 70rpx;
-}
-.like-image{
-  width: 32rpx;
-  height: 32rpx;
-  margin-left: 24rpx;
-  vertical-align: middle;
-}
-.like-font{
-  color: #676767;
-  font-size: 28rpx;
-  line-height: 32rpx;
-  margin-left: 10rpx;
 }

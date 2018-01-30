@@ -1,0 +1,9 @@
+
+<template name="postLike" >
+      <view class='user-comment'>
+        <image class='like-image' src='/images/icon/chat1.png'></image>
+        <text class='like-font'>{{reading}}</text>
+        <image class='like-image' src='/images/icon/view.png'></image>
+        <text class='like-font'>{{collection}}</text>
+      </view>
+</template>

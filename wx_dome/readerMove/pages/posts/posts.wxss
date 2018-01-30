@@ -1,5 +1,5 @@
 /**index.wxss**/
-@import"posts-item/posts-item-template.wxss";
+@import "posts-item/posts-item-template.wxss";
 page{
   background: #f8f8f8;
 }
@@ -11,4 +11,3 @@ swiper image{
   width: 100%;
   height:100%;
 }
-

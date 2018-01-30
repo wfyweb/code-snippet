@@ -1,0 +1,5 @@
+<!--pages/movies/movies.wxml-->
+<import src="movie-list/movie-list-template.wxml" />
+<template is="movieListTemplate" />
+<template is="movieListTemplate" />
+<template is="movieListTemplate" />
