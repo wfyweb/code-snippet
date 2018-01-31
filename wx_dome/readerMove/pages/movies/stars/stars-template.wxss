@@ -1,20 +1,22 @@
-.stars-container{
-  display: flex;
-  flex-direction:row;
-  padding-bottom:22rpx; 
-}
-.stars-img{
-  margin-right:16rpx; 
+.stars-container {
   display: flex;
   flex-direction: row;
-  margin-top:6rpx;
 }
-.stars-img image{
-  width: 17rpx;
+
+.stars {
+  display: flex;
+  flex-direction: row;
   height: 17rpx;
-  padding-right:3rpx; 
+  margin-right: 24rpx;
+  margin-top: 6rpx;
 }
-.stars-font{
-  font-size: 24rpx;
-  color:#666;
+
+.stars image {
+  padding-left: 3rpx;
+  height: 17rpx;
+  width: 17rpx;
+}
+
+.star-score{
+   color: #1f3463;
 }

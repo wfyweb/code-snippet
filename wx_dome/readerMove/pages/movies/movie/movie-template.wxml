@@ -1,11 +1,8 @@
 <import src="../stars/stars-template.wxml" />
 <template name="movieTemplate">
-<view style='display:inline-block'>
- <view class='movie-container'>
-    <image class='movie-img' src='/images/youname.jpg'></image>
-    <text class='movie-font'>迷宫3</text>
-    <template is="starsTemplate" />
-  </view>
-</view>
- 
+    <view class="movie-container" catchtap="onMovieTap" data-movieId="{{movieId}}">
+        <image class="movie-img" src="{{coverageUrl}}"></image>
+        <text class="movie-title">{{title}}</text>
+        <template is="starsTemplate" data="{{stars:stars, score: average}}" />
+    </view>
 </template>
