@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.7.3",
 	"appid": "touristappid",
-	"projectname": "ReaderMovie_All",
+	"projectname": "ReadMove",
 	"condition": {
 		"search": {
 			"current": -1,

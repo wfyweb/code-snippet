@@ -1,108 +1,87 @@
-var util = require('../../utils/util.js')
+// pages/movies/movies.js
+var setStars = require('../utils/utils.js');
 var app = getApp();
 Page({
-  // RESTFul API JSON
-  // SOAP XML
-  //粒度 不是 力度
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    inTheaters: {},
-    comingSoon: {},
-    top250: {},
-    searchResult: {},
-    containerShow: true,
-    searchPanelShow: false,
+
   },
 
-  onLoad: function (event) {
-    var inTheatersUrl = app.globalData.doubanBase +
-      "/v2/movie/in_theaters" + "?start=0&count=3";
-    var comingSoonUrl = app.globalData.doubanBase +
-      "/v2/movie/coming_soon" + "?start=0&count=3";
-    var top250Url = app.globalData.doubanBase +
-      "/v2/movie/top250" + "?start=0&count=3";
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    var DataUrl = app.globalData.doubanBase;
+    var inTheatersUrl = DataUrl + '/v2/movie/in_theaters' +'?start=0&count=5';
+    var comingSoonUrl = DataUrl + '/v2/movie/coming_soon' + '?start=0&count=5' ;
+    var top250Url = DataUrl + '/v2/movie/top250' + '?start=0&count=5' ;
 
-    this.getMovieListData(inTheatersUrl, "inTheaters", "正在热映");
-    this.getMovieListData(comingSoonUrl, "comingSoon", "即将上映");
-    this.getMovieListData(top250Url, "top250", "豆瓣Top250");
+    this.getMovieListData(inTheatersUrl,'inTheaters','正在热映') 
+    this.getMovieListData(comingSoonUrl,'comingSoon','即将上映')
+    this.getMovieListData(top250Url,'top250','豆瓣Top250')
+    
+    console.log(this.data)//转化的数据结构
   },
-
-  onMoreTap: function (event) {
-    var category = event.currentTarget.dataset.category;
-    wx.navigateTo({
-      url: "more-movie/more-movie?category=" + category
-    })
-  },
-
-  onMovieTap:function(event){
-    var movieId = event.currentTarget.dataset.movieid;
-    wx.navigateTo({
-      url: "movie-detail/movie-detail?id="+movieId
-    })
-  },
-
+  // 获取豆瓣API
   getMovieListData: function (url, settedKey, categoryTitle) {
     var that = this;
     wx.request({
       url: url,
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {
-        "Content-Type": "json"
+        'Content-Type': 'json'
       },
       success: function (res) {
-        that.processDoubanData(res.data, settedKey, categoryTitle)
+        console.log(res.data)
+        that.processDoubanData(res.data,settedKey,categoryTitle)
       },
       fail: function (error) {
-        // fail
         console.log(error)
       }
     })
   },
-
-  onCancelImgTap: function (event) {
-      this.setData({
-        containerShow: true,
-        searchPanelShow: false,
-        searchResult:{}
-      }
-    )
-  },
-
-  onBindFocus: function (event) {
-    this.setData({
-      containerShow: false,
-      searchPanelShow: true
-    })
-  },
-
-  onBindBlur: function (event) {
-    var text = event.detail.value;
-    var searchUrl = app.globalData.doubanBase + "/v2/movie/search?q=" + text;
-    this.getMovieListData(searchUrl, "searchResult", "");
-  },
-
-  processDoubanData: function (moviesDouban, settedKey, categoryTitle) {
+  // 转化所需JSON格式
+  processDoubanData: function(moviesDouban,settedKey,categoryTitle){
     var movies = [];
-    for (var idx in moviesDouban.subjects) {
-      var subject = moviesDouban.subjects[idx];
+    for (var idx in moviesDouban.subjects){
+      var subject = moviesDouban.subjects[idx]
       var title = subject.title;
-      if (title.length >= 6) {
-        title = title.substring(0, 6) + "...";
+      if(title.length>=6){
+        title = title.substring(0,6)+'...'
       }
-      // [1,1,1,1,1] [1,1,1,0,0]
-      var temp = {
-        stars: util.convertToStarsArray(subject.rating.stars),
-        title: title,
-        average: subject.rating.average,
-        coverageUrl: subject.images.large,
+      var tem = {
+        coverUrl: subject.images.large,//海报
+        title: title, //电影名称
+        stars: setStars.setStars(subject.rating.stars),//星星
+        average: subject.rating.average, //评分
         movieId: subject.id
       }
-      movies.push(temp)
+      movies.push(tem)
     }
-    var readyData = {};
+    // console.log(subject)
+    
+    
+    var  readyData = {};
     readyData[settedKey] = {
-      categoryTitle: categoryTitle,
-      movies: movies
+      categoryTitle:categoryTitle,
+      movies:movies
     }
-    this.setData(readyData);
+   
+
+    this.setData(readyData)
+  },
+  // 点击更多
+  onMoreTap:function(event){
+    //跳转更多页面，传递电影分类
+    wx.navigateTo({
+      url: './movie-more/movie-more?movieid=' + event.currentTarget.dataset.category,
+    })
+  },
+  // 点击电影
+  onMovieTap:function(event){
+    console.log(event.currentTarget.dataset.movieid)
   }
+  
 })
