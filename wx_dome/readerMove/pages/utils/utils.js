@@ -1,3 +1,4 @@
+//星星评分函数
 function setStars(stars){
   var num = stars/10;
   var min = parseInt(num);
@@ -15,7 +16,22 @@ function setStars(stars){
  
   return array
 }
-
+// 数据请求函数
+function http(url,callBack) {
+  wx.request({
+    url: url,
+    header: {
+      'Content-Type': 'json'
+    },
+    success: function (res) {
+      callBack(res.data)
+    },
+    fail: function (error) {
+      console.log(error)
+    }
+  })
+}
 module.exports={
-  setStars:setStars
+  setStars:setStars,
+  http:http
 }

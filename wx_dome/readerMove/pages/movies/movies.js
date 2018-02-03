@@ -34,7 +34,6 @@ Page({
         'Content-Type': 'json'
       },
       success: function (res) {
-        console.log(res.data)
         that.processDoubanData(res.data,settedKey,categoryTitle)
       },
       fail: function (error) {
@@ -76,7 +75,7 @@ Page({
   onMoreTap:function(event){
     //跳转更多页面，传递电影分类
     wx.navigateTo({
-      url: './movie-more/movie-more?movieid=' + event.currentTarget.dataset.category,
+      url: './movie-more/movie-more?category=' + event.currentTarget.dataset.category,
     })
   },
   // 点击电影
