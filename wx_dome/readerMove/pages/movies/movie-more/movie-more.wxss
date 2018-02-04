@@ -1,0 +1,5 @@
+/* pages/movies/movie-more/movie-more.wxss */
+@import "../movie/movie-template.wxss";
+.more-container{
+  margin: 20rpx auto;
+}

@@ -4,16 +4,17 @@
     <view class='inner-container'>
       <view class='movie-head'>
         <text class='slogan'>{{categoryTitle}}</text>
-        <view class='more'>
+        <view class='more' catchtap='onMoreTap' data-category='{{categoryTitle}}'>
           <text class='more-font'>更多</text>
           <image class='more-img' src='/images/icon/arrow-right.png'></image>
         </view>
       </view>
       <view class='movies-container'>
-       <black wx:for="{{movies}}" wx:for-item="movie" >
-         <template is="movieTemplate" data="{{...movie}}" />
-      </black> 
-        
+      <scroll-view scroll-x="true" style='white-space: nowrap;'>
+        <block wx:for="{{movies}}" wx:for-item="movie">
+           <template is="movieTemplate" data="{{...movie}}"/>
+        </block>
+      </scroll-view>
       </view>
     </view>
   </view>
