@@ -1,7 +1,6 @@
 .stars-container{
   display: flex;
   flex-direction:row;
-  padding-bottom:22rpx; 
 }
 .stars-img{
   margin-right:16rpx; 
