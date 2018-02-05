@@ -1,21 +1,45 @@
-// pages/welcome/welcome.js
 Page({
-  onTap:function(){
-    // redirectTo和navigateTo不能再跳转到带有tab选项卡的页面
-    //跳转子页面 
-    // wx.navigateTo({
-    //   url: '/pages/posts/posts',
-    // })
+  data: {
+    motto: 'Hello World',
+    
+  },
+  //事件处理函数
+  bindViewTap: function(event) {
+    wx.navigateTo({
+      url: '../posts/post'
+    });
 
-    // 跳转平行页面
     // wx.redirectTo({
-    //   url: '/pages/posts/posts',
-    // })
-   
-     wx.switchTab({
-        url: "/pages/posts/posts"
-    })
-   
+    //   url: '../posts/post'
+    // });
+
+    // wx.navigateTo({
+    //   url: 'String',
+    //   success: function(res){
+    //     // success
+    //   },
+    //   fail: function() {
+    //     // fail
+    //   },
+    //   complete: function() {
+    //     // complete成功失败都执行
+    //   }
+    // });
+
+
+
+  },
+  onteztop:function(){
+    console.log(" ssssonteztop")
+  },
+
+  onHide:function(){
+    // 当页面隐藏
+     console.log("onHide")
+  },
+  onUnload:function(){
+    //当页面关闭
+     console.log("onUnload")
   }
   
 })
